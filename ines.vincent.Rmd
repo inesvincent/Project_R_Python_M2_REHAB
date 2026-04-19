@@ -63,7 +63,7 @@ The objective of this code is to analyze the association between handgrip streng
 - `handgrip_strength` : handgrip score :gives the muscular strength of the upper limbs (kg)  
 - `walk_time_4m` : Time (in seconds) taken by the patient to walk 4 meters
 - `time_5_raise_chair` : Time (in seconds) taken by the patient to perform 5 chair stands (5STS)
-- `walking_speed` : Walking speed (m/s), derived from the 4-meter walk test. 
+- `walking_speed_mps` : Walking speed (m/s), derived from the 4-meter walk test. 
 $$
 \text{Walking speed (m/s)} = \frac{4}{\text{walk time for 4m}}
 $$
