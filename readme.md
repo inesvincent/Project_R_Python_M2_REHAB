@@ -5,46 +5,110 @@
 # Handgrip Strength and Functionnal Performance in Patients with Interstitial Lung Disease (ILD)
 
 ## 1. Scientific problem
+### 1.1. Context
 
-### 1.1 Context
+Interstitial lung diseases (ILDs) constitute a heterogeneous group of lung disorders characterized by diffuse damage to the pulmonary interstitium, leading to impaired gas exchange, dyspnea, and reduced exercise tolerance. These conditions have a significant impact on physical capacity and daily life (College of Pulmonology Educators, 2023). Beyond respiratory symptoms, IPDs can contribute to reduced physical activity and general deconditioning.
+Grip strength can serve as a simple measure of muscle strength and provide predictive information on short- and long-term mortality and morbidity (Bohannon, 2019; Norman et al., 2011). However, its ability to reflect overall muscle strength remains controversial (Szaflik et al., 2024). Functional performance can be assessed using clinical tests such as walking speed and the “five-time sit-to-stand” (5STS) test, which evaluate mobility, lower limb strength, and overall functional capacity (Jones et al., 1999).
 
-Interstitial lung disease (ILD)(PID in french) is characterized by **progressive respiratory impairment**, which may lead to exercise intolerance, reduced physical capacity, and muscle dysfunction. 
-Muscle weakness is frequently observed in patients with chronic respiratory diseases. 
+What we aim to determine: To evaluate whether handgrip strength is associated with functional performance in patients with ILD.
 
-Handgrip strength primarily reflects upper-limb muscle strength and could be considered as an indirect indicator of overall muscle function.
+### 1.2. Aim
+The aim of this study is to investigate the association between handgrip strength and functional performance in patients with ILD aged over 65 years, using walking speed and the five-times sit-to-stand (5STS) test as clinical measures.
 
-Walking speed and the five-times sit-to-stand test are commonly used to assess functional performance and mobility.
-Exploring the relationship between muscle strength and functional performance may help to better characterize physical impairment in patients with ILD
+### 1.3. Method
+This monocentric study is based on a database of 48 patients with ILD, collected during routine pneumology consultations.
+Handgrip strength was used to assess upper-limb muscle strength. Functional performance was evaluated using the 4-meter walk test and the five-times sit-to-stand (5STS) test. Walking speed was calculated as:
+Walking speed (m/s) = 4 / walk_time_4m
 
-**What we are looking for **: 
-To determine whether handgrip strength is assoicated with functionnal performance in patients with ILD.
+### 1.4. Participants
+The study included 48 patients aged over 65 years diagnosed with ILD after a multidisciplinary discussion.
 
----------
+### 1.5. Outcome measure
+The main variables analyzed were handgrip strength, walking speed, and performance on the five-times sit-to-stand (5STS) test.
 
-### 1.2 Aim 
+----------
 
-The aim of this study is to evaluate the association between muscle strength, measured by handgrip, and functional performance assessed by : 
-     
-  - Walking speed (4-meter walk test)
-  - 5 times sit to stand test
-  
-in monocentric database of patients with ILD.
+## 2. Python project
 
---------
+### 2.1. Aim
 
-### 1.3 Method
+The objective of this project is to clean and structure the clinical dataset and to compute derived variables such as walking speed from the 4-meter walk test.
 
-This project is base on a monocentric retrospective database including 48 patients diagnosed with ILD.
+---
 
-The following variables were analyzed :
+### 2.2. Data
 
-  - 'handgrip' : upper-limb muscle strength
-  - 'Test4m' : time (in seconds) to complete 4 meters
-  - 'Test5levers' : time (in seconds) to complete 5 sit-to-stand repetitions
-  
-Walking speed was calculated as : 
+- **frapid_base.xlsx**: raw clinical dataset including patient characteristics and functional test results  
+- **frapid_data_clean.csv**: cleaned dataset generated during preprocessing and used for statistical analysis  
 
-Walking speed (m/s) = 4 / Test4m
+The dataset includes the following variables:
 
-Statistical analyses included : 
+- `handgrip`: upper-limb muscle strength  
+- `Test4m`: time (in seconds) to complete the 4-meter walk test  
+- `Test5levers`: time (in seconds) to perform the five-times sit-to-stand (5STS) test  
 
+Derived variable:
+
+- **Walking speed (m/s)** calculated as:  
+  `walking_speed = 4 / Test4m`  
+
+---
+
+### 2.3. Notebook
+
+#### main.ipynb
+
+**Aim:**  
+Clean the dataset and compute derived variables.
+
+**Input:**  
+`frapid_base.xlsx`  
+
+**Output:**  
+`frapid_data_clean.csv` (generated during execution)  
+
+**Additional steps:**  
+Basic exploratory analysis, including population description and visualization of variable distributions.
+
+---
+
+## 3. R project
+
+### 3.1. Aim
+
+The objective of this analysis is to investigate the association between handgrip strength and functional performance (walking speed and 5STS) in patients with ILD.
+
+---
+
+### 3.2. Data analysis
+
+Statistical analyses were performed using R:
+
+- Descriptive statistics of the study population  
+- Analysis of the association between handgrip strength and functional performance  
+- Exploration of the influence of age and sex on these associations  
+- Visualization of relationships between variables  
+
+---
+
+### 3.3. Script
+
+#### ines.vincent.Rmd
+
+**Aim:**  
+Perform statistical analyses and generate results.
+
+**Input:**  
+`frapid_data_clean.csv`  
+
+**Content:**
+
+- Data import  
+- Data processing  
+- Descriptive statistics  
+- Association analysis (handgrip vs walking speed and 5STS)  
+- Exploration of age and sex effects  
+- Graphical visualization  
+
+**Output:**  
+Statistical results and figures included in the final report  
