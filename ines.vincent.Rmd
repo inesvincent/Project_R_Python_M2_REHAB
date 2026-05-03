@@ -145,6 +145,7 @@ qqnorm(data$time_5_raise_chair, main = "QQ-plot: 5STS")
 qqline(data$time_5_raise_chair)
 
 ```
+
 A QQ-plot allows you to compare the distribution of observed data to a theoretical normal distribution: if the data points lie on the line, the data is normally distributed; conversely, deviations from this line indicate a deviation from normality.
 
 According to the QQ plots obtained here, the distribution of the variables deviates from a normal distribution (particularly for the 5STS), which suggests the use of nonparametric tests. However, a Shapiro-Wilk test is performed to statistically confirm this hypothesis.
@@ -155,6 +156,7 @@ shapiro.test(data$handgrip_strength)
 shapiro.test(data$walking_speed)
 shapiro.test(data$time_5_raise_chair)
 ```
+
 The Shapiro-Wilk test is used to determine whether a variable follows a normal distribution. When the p-value > 0.05, the null hypothesis of normality is not rejected: the data are therefore considered to follow a normal distribution. Conversely, a p-value < 0.05 indicates that the data do not follow a normal distribution.
 
 According to our results, grip strength (p = 0.8255) and walking speed (p = 0.1582) do not deviate significantly from a normal distribution. In contrast, the “sit-to-stand” test (p < 0.001) presents a non-normal distribution.
@@ -165,6 +167,7 @@ These results are consistent with the visual analysis of the QQ plots, where the
 ### 5.3. Correlation analysis
 
 Spearman’s correlation was used to assess the association between handgrip strength and functional performance variables.
+
 ```{r, message=FALSE, warning=FALSE}
 # Handgrip vs walking speed
 cor.test(data$handgrip_strength, data$walking_speed, method = "spearman")
@@ -184,6 +187,7 @@ ggplot(data, aes(x = handgrip_strength, y = walking_speed_mps)) +
        y = "Walking speed (m/s)") +
   theme_minimal()
 ```
+
 A Spearman correlation analysis was performed to assess the association between grip strength and walking speed. A moderate, statistically significant positive correlation was observed (ρ = 0.43; p = 0.003), indicating that higher grip strength is associated with higher walking speed.
 
 ```{r, message=FALSE, warning=FALSE}
@@ -205,6 +209,7 @@ ggplot(data, aes(x = handgrip_strength, y = time_5_raise_chair)) +
        y = "time_5_raise_chair (s)") +
   theme_minimal()
 ```
+
 A Spearman correlation analysis was also performed to assess the association between grip strength and time on the 5STS test. A moderate, statistically significant negative correlation was observed (rho = -0.32; p = 0.029).
 
 ### 5.3.1 Interpretation of results
@@ -217,6 +222,7 @@ These results are based on unadjusted analyses; therefore, a supplementary analy
 
 ### 5.4. Adjusted analysis
 Linear regression analyses were conducted to assess the association between grip strength and functional performance, after adjustment for age and sex. The results of the models are presented below, along with 95% confidence intervals for the estimated coefficients.
+
 ```{r}
 # Convert gender to factor for regression analysis
 data$gender <- as.factor(data$gender)
