@@ -7,8 +7,7 @@
 ## 1. Scientific problem
 ### 1.1. Context
 
-Interstitial lung diseases (ILDs) constitute a heterogeneous group of lung disorders characterized by diffuse damage to the pulmonary interstitium, leading to impaired gas exchange, dyspnea, and reduced exercise tolerance. These conditions have a significant impact on physical capacity and daily life (College of Pulmonology Educators, 2023). Beyond respiratory symptoms, IPDs can contribute to reduced physical activity and general deconditioning.
-Grip strength can serve as a simple measure of muscle strength and provide predictive information on short- and long-term mortality and morbidity (Bohannon, 2019; Norman et al., 2011). However, its ability to reflect overall muscle strength remains controversial (Szaflik et al., 2024). Functional performance can be assessed using clinical tests such as walking speed and the “five-time sit-to-stand” (5STS) test, which evaluate mobility, lower limb strength, and overall functional capacity (Jones et al., 1999).
+Interstitial lung diseases (ILDs) constitute a heterogeneous group of lung disorders characterized by diffuse damage to the pulmonary interstitium, leading to impaired gas exchange, dyspnea, and reduced exercise tolerance. These conditions have a significant impact on physical capacity and daily life (College of Pulmonology Educators, 2023). Beyond respiratory symptoms, IPDs can contribute to reduced physical activity and general deconditioning (Bloem et al., 2020).
 
 What we aim to determine: To evaluate whether handgrip strength is associated with functional performance in patients with ILD.
 
@@ -43,6 +42,9 @@ The objective of this project is to clean and structure the clinical dataset and
 
 The dataset includes the following variables:
 
+- `patient_id`: unique identifier for each participant  
+- `age`: age of the participant (years)  
+- `gender`: sex of the participant 
 - `handgrip_strength`: upper-limb muscle strength  
 - `walk_time_4m`: time (in seconds) to complete the 4-meter walk test  
 - `time_5_raise_chair`: time (in seconds) to perform the five-times sit-to-stand (5STS) test  
@@ -51,24 +53,30 @@ Derived variable:
 
 - **Walking speed (m/s)** calculated as:  
   `walking_speed = 4 / walk_time_4m`  
+  
 
 ---
 
 ### 2.3. Notebook
 
-#### main.ipynb
+### 2.3. Notebook organization
+
+#### vincent.ines.ipynb
 
 **Aim:**  
-Clean the dataset and compute derived variables.
+Clean and preprocess the clinical dataset, and compute derived variables.
 
 **Input:**  
-`frapid_base.xlsx`  
+`data/raw/frapid_base.xlsx`
 
 **Output:**  
-`frapid_data_clean.csv` (generated during execution)  
+`data/clean/frapid_data_clean.csv`
 
-**Additional steps:**  
-Basic exploratory analysis, including population description and visualization of variable distributions.
+**Content:**
+- Data import and initial inspection  
+- Data cleaning (handling missing values, formatting variables)  
+- Creation of derived variables (walking speed)  
+- Basic exploratory analysis (descriptive statistics and visualization)
 
 ---
 
@@ -80,38 +88,63 @@ The objective of this analysis is to assess the association between handgrip str
 
 ---
 
+3.2. Data organization
+
+- `patient_id`: unique identifier for each participant  
+- `age`: age of the participant (years)  
+- `gender`: sex of the participant 
+- `handgrip_strength`: upper-limb muscle strength  
+- `walk_time_4m`: time (in seconds) to complete the 4-meter walk test  
+- `time_5_raise_chair`: time (in seconds) to perform the five-times sit-to-stand (5STS) test
+- `walking_speed_mps`: walking speed (m/s), calculated as 4 / walk_time_4m  
+
+
 ### 3.2. Data analysis
 
 Statistical analyses were performed using R:
 
 - Descriptive statistics of the study population  
-- Assessment of variable distribution (QQ-plots and Shapiro-Wilk test)  
-- Correlation analysis between handgrip strength and functional performance (Pearson or Spearman, depending on distribution)  
+- Assessment of normality using QQ-plots and the Shapiro-Wilk test  
+- Correlation analysis between handgrip strength and functional performance (Spearman correlation)  
 - Adjusted analysis using linear regression models including age and sex  
-- Visualization of relationships between variables  
 
 ---
 
 ### 3.3. Script
 
-#### ines.vincent.Rmd
+### 3.3. Script
+
+#### vincent.ines.Rmd
 
 **Aim:**  
 Perform statistical analyses and generate results.
 
 **Input:**  
-`frapid_data_clean.csv`  
+`data/clean/frapid_data_clean.csv`
 
 **Content:**
 
-- Data import and preparation  
-- Descriptive statistics  
-- Normality assessment  
-- Correlation analysis (handgrip strength vs walking speed and 5STS)  
-- Adjusted analysis using linear regression models (age and sex)  
-- Graphical visualization  
+- Data import and preprocessing  
+- Descriptive statistics of the study population  
+- Assessment of normality (QQ-plots and Shapiro-Wilk test)  
+- Correlation analysis using Spearman correlation (handgrip strength vs walking speed and 5STS)  
+- Adjusted analysis using linear regression models including age and sex  
+- Visualization of distributions and relationships between variables  
 
 **Output:**  
-Statistical results and figures included in the final report  
+Statistical results and figures used in the final report
 
+## 4. Conclusion
+
+This project highlights an association between handgrip strength and functional performance in patients with ILD. Higher grip strength is associated with better performance, particularly for walking speed.
+After adjustment for age and sex, the association with walking speed remains significant, suggesting an independent effect of muscle strength. In contrast, the association with the 5STS test is no longer significant after adjustment, indicating a potential influence of age.
+Overall, these findings suggest that handgrip strength may be a relevant indicator of functional performance, while age appears to be a key determinant of physical capacity in this population.
  
+## 5. References
+
+1.	item_210_PNEUMOPATHIES INTERSTITIELLES DIFFUSES.
+2.	Szaflik P, Zadoń H, Michnik R, Nowakowska-Lipiec K. Handgrip Strength as an Indicator of Overall Strength and Functional Performance—Systematic Review. Appl Sci. 2025 Jan;15(4):1847. doi:10.3390/app15041847
+3.	Bohannon RW. Grip Strength: An Indispensable Biomarker For Older Adults. Clin Interv Aging. 2019 Oct 1;14:1681–91. doi:10.2147/CIA.S194543 PubMed PMID: 31631989; PubMed Central PMCID: PMC6778477.
+4.	Bloem AEM, Veltkamp M, Spruit MA, Custers JWH, Bakker EWP, Dolk HM, et al. Validation of 4-meter-gait-speed test and 5-repetitions-sit-to-stand test in patients with pulmonary fbrosis: A clinimetric validation study. Sarcoidosis Vasc Diffuse Lung Dis. 2018 Jan 1;35(4):317–26. doi:10.36141/svdld.v35i4.7035
+
+
