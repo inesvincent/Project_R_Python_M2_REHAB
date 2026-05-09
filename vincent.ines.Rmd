@@ -22,19 +22,23 @@ Although ILD primarily affects the respiratory system, it may indirectly alter o
 
 Handgrip strength is commonly used as a simple measure of upper-limb muscle strength and has been associated with functional performance and health outcomes (Bohannon, 2019; Norman et al., 2011). However, its ability to reflect overall muscle strength remains debated, with inconsistent associations reported depending on populations and methodologies (Szaflik et al., 2024).
 
-Functional performance can be assessed using clinical tests such as walking speed and the five-times sit-to-stand (5STS) test, which reflect mobility, lower-limb strength, and overall functional capacity (Jones et al., 1999).
+Functional performance can be assessed using clinical tests such as walking speed and the five-times sit-to-stand test (5STS), which reflect mobility, lower-limb strength, and overall functional capacity (Jones et al., 1999).
 
 **What we are looking for:**  
-To determine whether handgrip strength is associated with functional performance in patients with ILD, specifically with walking speed (4-meter walk test) and performance on the five-times sit-to-stand (5STS) test.
+To determine whether handgrip strength is associated with functional performance in patients with ILD, specifically with walking speed (4-meter walk test) and performance on the five-times sit-to-stand test (5STS).
 
 
 ### 1.2. Aim
-The aim of this study is to investigate the association between handgrip strength and functional performance in patients with ILD aged over 65 years, using walking speed and the five-times sit-to-stand (5STS) test as clinical measures
+The aim of this study is to investigate the association between handgrip strength and functional performance in patients with ILD aged over 65 years, using walking speed and the five-times sit-to-stand test (5STS)as clinical measures.
+
+### 1.2.1. Hypothesis
+Research hypothesis:
+Higher handgrip strength is associated with higher walking speed and shorter completion time on the 5STS test in patients with ILD.
 
 ### 1.3. Method
 This study is based on a monocentric database including 48 patients diagnosed with ILD. Data were collected during routine clinical assessments performed at the time of pulmonology consultation.
 
-Handgrip strength was used to assess upper-limb muscle strength. Functional performance was evaluated using the 4-meter walk test and the five-times sit-to-stand (5STS) test. Walking speed was derived from the 4-meter walk time using the following formula:
+Handgrip strength was used to assess upper-limb muscle strength. Functional performance was evaluated using the 4-meter walk test and the five-times sit-to-stand test (5STS). Walking speed was derived from the 4-meter walk time using the following formula:
 
 Walking speed (m/s) = 4 / walk_time_4m
 
@@ -42,12 +46,12 @@ Walking speed (m/s) = 4 / walk_time_4m
 The study included 48 patients aged over 65 years diagnosed with interstitial lung disease (ILD), assessed during routine pulmonology consultations.
 
 ### 1.5. Outcome measure
-The main variables analyzed were handgrip strength, walking speed derived from the 4-meter walk test, and performance on the five-times sit-to-stand (5STS) test.
-
+Handgrip strength was considered the main explanatory variable.
+The primary outcome was walking speed derived from the 4-meter walk test, while the secondary outcome was performance on the five-times sit-to-stand test (5STS).
 ---
 
 ## 2. Aim of the code
-The objective of this code is to analyze the correlation between handgrip strength and functional performance in patients with ILD. The analysis includes the assessment of normality using graphical methods and the application of correlation tests (Pearson or Spearman, depending on data distribution) to evaluate the relationships between handgrip strength, walking speed, and performance on the five-times sit-to-stand (5STS) test.
+The objective of this code is to analyze the correlation between handgrip strength and functional performance in patients with ILD. The analysis includes the assessment of normality using graphical methods and the application of correlation tests (Pearson or Spearman, depending on data distribution) to evaluate the relationships between handgrip strength, walking speed, and performance on the five-times sit-to-stand test (5STS).
 
 ---
 
@@ -61,7 +65,7 @@ The objective of this code is to analyze the correlation between handgrip streng
 - `gender` : Sex of the patient  
 - `handgrip_strength` : handgrip score :gives the muscular strength of the upper limbs (kg)  
 - `walk_time_4m` : Time (in seconds) taken by the patient to walk 4 meters
-- `time_5_raise_chair` : Time (in seconds) taken by the patient to perform 5 chair stands (5STS)
+- `time_5_raise_chair` : Time (in seconds) taken by the patient to perform five-times sit-to-stand test(5STS)
 - `walking_speed_mps` : Walking speed (m/s), derived from the 4-meter walk test. 
 $$
 \text{Walking speed (m/s)} = \frac{4}{\text{walk time for 4m}}
@@ -70,23 +74,20 @@ $$
 
 ## 4. Statistical analysis
 
-The data were first imported after being cleaned. The normality of the variables was assessed using QQ plots and verified with a Shapiro-Wilk test.
-Based on this distribution, the choice of correlation test was adjusted: Pearson for normally distributed variables, and Spearman otherwise, as it is a nonparametric rank-based test.
-These tests allow us to assess the existence of an association between the variables, with estimation of p-values.
-Finally, a model adjusted for age and sex was developed to control for potential confounding factors.
+The cleaned dataset was imported and prepared for statistical analysis. The normality of the variables was assessed using QQ plots and verified with the Shapiro-Wilk test.
+Depending on the distribution of the data, the choice of correlation test was adapted: Pearson correlation can be used for normally distributed data, whereas Spearman correlation is preferred when the normality assumption is not met, as it is a nonparametric rank-based test.
+These tests allow the assessment of associations between variables, with estimation of correlation coefficients and p-values.
+Finally, regression models adjusted for age and sex were developed to control for potential confounding factors.
 
 ### 4.1. Data import and preparation (section 5.1)
 - **Aim:** To import the cleaned dataset and prepare variables for analysis.  
 - **Input:** `frapid_data_clean.csv` in `data/clean` folder  
 - **Output:** Dataset ready for statistical analysis, including derived variables such as walking speed.  
 
----
-
 ### 4.2. Assessment of normality (section 5.2)
 - **Aim:** To assess the distribution of the variables using graphical methods (QQ-plots).  
 - **Input:** Clean dataset  
 - **Output:** Graphical evaluation of normality for handgrip strength, walking speed, and 5STS performance.  
----
 
 ### 4.3. Correlation analysis (section 5.3)
 - **Aim:** To evaluate the correlation between handgrip strength and functional performance.
@@ -95,8 +96,6 @@ Finally, a model adjusted for age and sex was developed to control for potential
 - **Output:** Correlation coefficients and p-values indicating the strength and significance of the associations between:  
   - handgrip strength and walking speed  
   - handgrip strength and 5STS performance  
-
----
 
 ### 4.4. Adjusted analysis (section 5.4)  
 - **Aim:** To adjust the associations for potential confounding variables (age and gender).  
@@ -133,13 +132,17 @@ summary(data)
 ```
 
 ### 5.2. Assessment of normality
+H0: The data follow a normal distribution
+H1: The data do not follow a normal distribution
+If p > 0.05 → we do not reject H0 → the distribution is consistent with a normal distribution,
+if p < 0.05 → we reject H0 → the distribution is not normal.
 ```{r, message=FALSE, warning=FALSE}
 # QQ-plot for normality
 qqnorm(data$handgrip_strength, main = "QQ-plot: Handgrip strength")
 qqline(data$handgrip_strength)
 
-qqnorm(data$walking_speed, main = "QQ-plot: Walking speed")
-qqline(data$walking_speed)
+qqnorm(data$walking_speed_mps, main = "QQ-plot: Walking speed")
+qqline(data$walking_speed_mps)
 
 qqnorm(data$time_5_raise_chair, main = "QQ-plot: 5STS")
 qqline(data$time_5_raise_chair)
@@ -153,7 +156,7 @@ According to the QQ plots obtained here, the distribution of the variables devia
 ```{r, message=FALSE, warning=FALSE}
 # Shapiro-Wilk test
 shapiro.test(data$handgrip_strength)
-shapiro.test(data$walking_speed)
+shapiro.test(data$walking_speed_mps)
 shapiro.test(data$time_5_raise_chair)
 ```
 
@@ -161,52 +164,56 @@ The Shapiro-Wilk test is used to determine whether a variable follows a normal d
 
 According to our results, grip strength (p = 0.8255) and walking speed (p = 0.1582) do not deviate significantly from a normal distribution. In contrast, the “sit-to-stand” test (p < 0.001) presents a non-normal distribution.
 
-These results are consistent with the visual analysis of the QQ plots, where the data points for the 5STS deviate from the theoretical line, suggesting a non-normal distribution. Thus, although some variables are normally distributed, the presence of at least one non-normal variable calls for the use of nonparametric tests, such as Spearman’s correlation, to ensure the robustness and consistency of the analyses.
-
+These results are consistent with the visual analysis of the QQ plots, where the data points for the 5STS deviate from the theoretical line, suggesting a non-normal distribution. Although some variables were normally distributed, the normality assumption was not fully met for all variables; therefore, Spearman correlations were preferred to ensure robustness and methodological consistency.
 
 ### 5.3. Correlation analysis
 
-Spearman’s correlation was used to assess the association between handgrip strength and functional performance variables.
+Spearman’s correlation was used to assess the association between handgrip strength and functional performance variables. LOESS curves were added for visualization purposes to illustrate trends in the associations.
 
 ```{r, message=FALSE, warning=FALSE}
 # Handgrip vs walking speed
-cor.test(data$handgrip_strength, data$walking_speed, method = "spearman")
-
 results_ws <- cor.test(data$handgrip_strength, data$walking_speed_mps, method = "spearman")
 
 ggplot(data, aes(x = handgrip_strength, y = walking_speed_mps)) +
-  geom_point(color = "darkgreen", size = 2, alpha = 0.7) +
-  annotate("text",
-           x = max(data$handgrip_strength, na.rm = TRUE),
-           y = min(data$walking_speed_mps, na.rm = TRUE),
-           label = paste0("Spearman rho = ", round(results_ws$estimate, 2),
-                          "\np = ", signif(results_ws$p.value, 2)),
-           hjust = 1, vjust = 0) +
-  labs(title = "Handgrip vs Walking speed",
-       x = "Handgrip strength (kg)",
-       y = "Walking speed (m/s)") +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  annotate(
+    "text",
+    x = Inf,
+    y = Inf,
+    label = paste0(
+      "Spearman rho = ", round(results_ws$estimate, 2),
+      "\np = ", signif(results_ws$p.value, 2)), hjust = 1, vjust = 1) +
+  labs(
+    title = "Handgrip vs Walking speed",
+    x = "Handgrip strength (kg)",
+    y = "Walking speed (m/s)"
+  ) +
   theme_minimal()
+
 ```
 
 A Spearman correlation analysis was performed to assess the association between grip strength and walking speed. A moderate, statistically significant positive correlation was observed (ρ = 0.43; p = 0.003), indicating that higher grip strength is associated with higher walking speed.
 
 ```{r, message=FALSE, warning=FALSE}
 # Handgrip vs 5STS
-cor.test(data$handgrip_strength, data$time_5_raise_chair, method = "spearman")
-
 results_5STS <- cor.test(data$handgrip_strength, data$time_5_raise_chair, method = "spearman")
 
 ggplot(data, aes(x = handgrip_strength, y = time_5_raise_chair)) +
   geom_point(color = "lightcoral", size = 2, alpha = 0.7) +
-  annotate("text",
-         x = max(data$handgrip_strength, na.rm = TRUE) * 0.95,
-         y = max(data$time_5_raise_chair, na.rm = TRUE) * 0.98,
-           label = paste0("Spearman rho = ", round(results_5STS$estimate, 2),
-                          "\np = ", signif(results_5STS$p.value, 2)),
-           hjust = 1, vjust = 1) +
-  labs(title = "Handgrip vs 5STS",
-       x = "Handgrip strength (kg)",
-       y = "time_5_raise_chair (s)") +
+  geom_smooth(method = "loess") +
+  annotate(
+    "text",
+    x = max(data$handgrip_strength, na.rm = TRUE) * 0.95,
+    y = max(data$time_5_raise_chair, na.rm = TRUE) * 0.98,
+    label = paste0(
+      "Spearman rho = ", round(results_5STS$estimate, 2),
+      "\np = ", signif(results_5STS$p.value, 2)), hjust = 1, vjust = 1 ) +
+  labs(
+    title = "Handgrip vs 5STS",
+    x = "Handgrip strength (kg)",
+    y = "5STS time (s)"
+  ) +
   theme_minimal()
 ```
 
@@ -250,8 +257,10 @@ Furthermore, grip strength was no longer significantly associated with the 5STS 
 
 This analysis aimed to assess the association between handgrip strength and functional performance in patients with ILD.
 
-The analyses conducted reveal an association between handgrip strength and functional performance. A moderate positive correlation was observed with walking speed, as well as a negative correlation with the 5-step test, suggesting that greater muscle strength is associated with better performance.
+The analyses revealed associations between handgrip strength and functional performance. A moderate positive correlation was observed between handgrip strength and walking speed, as well as a negative correlation between handgrip strength and the 5STS test, suggesting that greater muscle strength is associated with better functional performance.
 
-After adjusting for age and sex, the association between handgrip strength and walking speed persists, indicating an independent effect of muscle strength. In contrast, the association with the 5STS test disappears, suggesting that it was partly influenced by age.
+After adjustment for age and sex, the association between handgrip strength and walking speed remained significant, suggesting an independent effect of muscle strength. In contrast, the association with the 5STS test disappeared after adjustment, suggesting that it was partly influenced by age.
 
-Furthermore, age appears to be a determining factor in functional performance, being associated with a decrease in walking speed and an increase in time on the 5STS, while sex does not appear to significantly influence these performance measures.
+Furthermore, age appeared to be an important factor in functional performance, being associated with decreased walking speed and increased time on the 5STS test, whereas sex was not significantly associated with these performance measures.
+
+These findings suggest that handgrip strength may reflect certain dimensions of functional performance, particularly walking speed, and may therefore represent a simple clinical indicator of functional performance in older patients with ILD.
