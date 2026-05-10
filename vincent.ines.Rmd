@@ -48,6 +48,7 @@ The study included 48 patients aged over 65 years diagnosed with interstitial lu
 ### 1.5. Outcome measure
 Handgrip strength was considered the main explanatory variable.
 The primary outcome was walking speed derived from the 4-meter walk test, while the secondary outcome was performance on the five-times sit-to-stand test (5STS).
+
 ---
 
 ## 2. Aim of the code
@@ -106,6 +107,7 @@ Finally, regression models adjusted for age and sex were developed to control fo
 --- 
 
 ## 5. Code
+The data cleaning, preprocessing steps, and exploratory analyses were performed in the Python notebook `vincent.ines.ipynb` and are also available through its HTML export `Python.html`, while the statistical analyses and interpretation of results were conducted in R through this R Markdown report.
 
 ### 5.0. Setup
 
