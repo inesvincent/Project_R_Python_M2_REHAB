@@ -54,7 +54,7 @@ Project_R_Python_M2_REHAB/
 ├── vincent.ines.Rmd                    R Markdown file used for statistical analyses
 │   
 │
-├── vincent.ines_Python.html            HTML export of the Python notebook
+├── Python.html                         HTML export of the Python notebook
 │   
 │
 ├── vincent.ines_RStudio.html           HTML export of the R Markdown analysis

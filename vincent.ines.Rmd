@@ -249,11 +249,11 @@ confint(model_5sts)
 ```
 ### 5.4.1 Interpretation of results
 
-Linear regression analyses were conducted to assess the association between grip strength and functional performance, taking age and sex into account. The β coefficient indicates the change in the outcome for a one-unit increase in the variable, holding all other factors constant. The 95% confidence intervals (95% CI) allow for an assessment of the precision of the estimates; an association is considered statistically significant when the interval does not contain 0 and the p-value is less than 0.05.
+Linear regression analyses were conducted to assess the association between handgrip strength and functional performance, taking age and sex into account. The β coefficient indicates the change in the outcome for a one-unit increase in the variable, holding all other factors constant. The 95% confidence intervals (95% CI) allow for an assessment of the precision of the estimates; an association is considered statistically significant when the interval does not contain 0 and the p-value is less than 0.05.
 
-After adjustment, a significant positive association is observed between grip strength and walking speed (β = 0.02; 95% CI [0.001; 0.04]; p = 0.041). Age is also associated (β = -0.03; 95% CI [-0.052; -0.004]; p = 0.024), indicating that increasing age is linked to a decrease in walking speed. In contrast, no significant association is observed for sex (β = -0.07; 95% CI [-0.49; 0.34]; p = 0.72).
+After adjustment, a significant positive association is observed between handgrip strength and walking speed (β = 0.02; 95% CI [0.001; 0.04]; p = 0.041). Age is also associated (β = -0.03; 95% CI [-0.052; -0.004]; p = 0.024), indicating that increasing age is linked to a decrease in walking speed. In contrast, no significant association is observed for sex (β = -0.07; 95% CI [-0.49; 0.34]; p = 0.72).
 
-Furthermore, grip strength was no longer significantly associated with the 5STS test after adjustment (β = -0.11; 95% CI [-0.32; 0.09]; p = 0.28). Age remained significantly associated (β = 0.36; 95% CI [0.11; 0.62]; p = 0.006), indicating that older age is associated with a longer completion time. Gender is not significantly associated (β = -2.21; 95% CI [-6.56; 2.14]; p = 0.31).
+Furthermore, handgrip strength was no longer significantly associated with the 5STS test after adjustment (β = -0.11; 95% CI [-0.32; 0.09]; p = 0.28). Age remained significantly associated (β = 0.36; 95% CI [0.11; 0.62]; p = 0.006), indicating that older age is associated with a longer completion time. Gender is not significantly associated (β = -2.21; 95% CI [-6.56; 2.14]; p = 0.31).
 
 ## 6. Conclusion
 
