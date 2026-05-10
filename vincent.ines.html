@@ -793,7 +793,17 @@ handgrip strength and functional performance variables. LOESS curves
 were added for visualization purposes to illustrate trends in the
 associations.</p>
 <pre class="r"><code># Handgrip vs walking speed
-results_ws &lt;- cor.test(data$handgrip_strength, data$walking_speed_mps, method = &quot;spearman&quot;)
+cor.test(data$handgrip_strength, data$walking_speed_mps, method = &quot;spearman&quot;)</code></pre>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  data$handgrip_strength and data$walking_speed_mps
+## S = 9224.4, p-value = 0.002779
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.4311179</code></pre>
+<pre class="r"><code>results_ws &lt;- cor.test(data$handgrip_strength, data$walking_speed_mps, method = &quot;spearman&quot;)
 
 ggplot(data, aes(x = handgrip_strength, y = walking_speed_mps)) +
   geom_point() +
@@ -818,7 +828,17 @@ statistically significant positive correlation was observed (ρ = 0.43; p
 = 0.003), indicating that higher grip strength is associated with higher
 walking speed.</p>
 <pre class="r"><code># Handgrip vs 5STS
-results_5STS &lt;- cor.test(data$handgrip_strength, data$time_5_raise_chair, method = &quot;spearman&quot;)
+cor.test(data$handgrip_strength, data$time_5_raise_chair, method = &quot;spearman&quot;)</code></pre>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  data$handgrip_strength and data$time_5_raise_chair
+## S = 21446, p-value = 0.02877
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##        rho 
+## -0.3226009</code></pre>
+<pre class="r"><code>results_5STS &lt;- cor.test(data$handgrip_strength, data$time_5_raise_chair, method = &quot;spearman&quot;)
 
 ggplot(data, aes(x = handgrip_strength, y = time_5_raise_chair)) +
   geom_point(color = &quot;lightcoral&quot;, size = 2, alpha = 0.7) +
